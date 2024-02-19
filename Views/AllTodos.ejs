@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h2>Add New Todo</h2>
+    <form action="/add" method="post">
+        <input type="text" name="title" placeholder="Task   " required><br>
+        <input type="text" name="description" placeholder="Description" required><br>
+        <label for="completed">Completed:</label><br>
+        <input type="radio" id="completed-true" name="completed" value="true" required>
+        <label for="completed-true">True</label><br>
+        <input type="radio" id="completed-false" name="completed" value="false" required>
+        <label for="completed-false">False</label><br>
+        <button type="submit">Add Todo</button>
+    </form>
+
+    <h1>All Todos</h1>
+    <ul>
+        <% for (let i = 0; i < todos.length; i++) { %>
+            <h2><%= todos[i].title %></h2>
+            <h3><%= todos[i].id %></h3>
+            <p><%= todos[i].description %></p>
+            <li><%= todos[i].completed %></li>
+            <a href="/view/<%= todos[i].id %>">view</a>
+            <a href="/update/<%= todos[i].id %>">update</a>
+            <a href="/delete/<%= todos[i].id %>">delete</a>
+            <hr>
+        <% } %>
+    </ul>
+</body>
+</html>
